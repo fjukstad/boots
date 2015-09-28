@@ -1,4 +1,4 @@
-#'@export
+#' @export
 boots <- function(X, Y) {
     # generates B bootstrap samples
     B = 1
@@ -68,12 +68,12 @@ syntheticdata <- function(nsamples=2000, class=F, noisevars=0) {
   return(data.frame(tmp, noise, response))
 }
 
-#'@export
+#' @export
 predictors <- function(dataset){
   return(as.matrix(dataset[, -ncol(dataset)]))
 }
 
-#'@export
+#' @export
 responses <- function(dataset){
   return(dataset$response)
 }
