@@ -5,7 +5,7 @@ boots <- function(X, Y) {
     bootstrap.samples <- matrix(sample(1:nrow(X), nrow(X)*B, replace=T), nrow=B)
 
     # to hold results (computes AUC
-    aucs <- matrix(rep(0, B), nrow=B)
+    aucs <- NULL # matrix(rep(0, B), nrow=B)
 
     # for each bootstrap sample, calculate AUC of naive Bayes
     for (bs in 1:B) {
@@ -29,7 +29,7 @@ boots <- function(X, Y) {
 
       pred <- predict(nb, X.oob, type="raw")[,"TRUE"]
       roc.pred <- roc(pred, Y.oob)
-      aucs[bs] <- auc(roc.pred)#, min = 0, max = 1)
+      aucs <- auc(roc.pred)#, min = 0, max = 1)
     }
     return(aucs)
 }
